@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function korean() {
+            alert("안녕하세요");
+        }
+        function english() {
+            alert("헬로");
+        }
+        function chinese() {
+            alert("니하오");
+        }
+        function greeting(nation) {
+            console.log("greeting start");
+            if(nation == 'k') {
+                document.getElementById("result").innerHTML = "안녕하세요";
+            } else if(nation == 'e') {
+                document.getElementById("result").innerHTML = "헬로";
+            } else if (nation == 'c') {
+                document.getElementById("result").innerHTML = "니하오";
+            }
+            console.log("greeting end");
+            console.log(document.getElementById("result"));
+        }
+    </script>
+</head>
+<body>
+<p>각 나라의 인사말</p>
+<input type="button" onclick="greeting('k');" value="한국">
+<input type="button" onclick="greeting('e');" value="미국">
+<input type="button" onclick="greeting('c');" value="중국">
+<p id = "result">
+</body>
+</html>
