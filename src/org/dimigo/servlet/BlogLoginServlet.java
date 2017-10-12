@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(name = "LoginServlet", urlPatterns={"/login"})
+@WebServlet(name = "BlogLoginServlet", urlPatterns={"/bloglogin"})
 
-public class LoginServlet extends HttpServlet {
+public class BlogLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
@@ -23,26 +22,26 @@ public class LoginServlet extends HttpServlet {
         System.out.printf("id : %s, pwd : %s\n",id,pwd);
 
         // id, pwd 적합성 체크
-        boolean result = true;
+//        boolean result = true;
 
-        if(result) {
+        if(id.equals("test@gmail.com")) {
             // 세션에 상용자 정보를 생성해서 담기
             HttpSession session = request.getSession();
 
             UserVO user = new UserVO();
             user.setId(id);
-            user.setName("홍길동");
-//            user.setNickname("의적");
+            user.setName("박민서");
 
             session.setAttribute("user", user);
 
-            RequestDispatcher rd = request.getRequestDispatcher("/JSP/home.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/JSP/home3.jsp");
             rd.forward(request,response);
         } else {
             request.setAttribute("msg", "error");
             RequestDispatcher rd = request.getRequestDispatcher("/JSP/login.jsp");
             rd.forward(request,response);
         }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,38 +49,4 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/JSP/login.jsp");
         rd.forward(request,response);
     }
-
-//    protected void doPost2(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//        request.setCharacterEncoding("utf-8");
-//        String id = request.getParameter("id");
-//        String pwd = request.getParameter("pwd");
-//        System.out.printf("id : %s, pwd : %s\n",id,pwd);
-//
-//        response.setContentType("application/json;charset=utf-8");
-//        PrintWriter out = response.getWriter();
-//
-//        out.println("{");
-//        out.println("\"id\":"+"\""+id+"\",");
-//        out.println("\"pwd\":"+"\""+pwd+"\"");
-//        out.println("}");
-//
-//        out.close();
-
-        // JSON Simple Library
-//        JSONObject json = new JSONObject();
-//        json.put("id", id);
-//        System.out.println(json.toJSONString());
-//        out.write(json.toJSONString());
-
-        // Gson Library 사용해서 소스 작성하기
-
-//        Gson gson = new Gson();
-//        JsonObject object = new JsonObject();
-//        object.addProperty("id", id);
-//        String json = gson.toJson(object);
-//        out.write(json);
-
-//        out.close();
-
 }

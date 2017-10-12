@@ -82,7 +82,10 @@ body {
 .masthead-brand {
     display: flex;
     align-items: center;
-    width : 300px;
+}
+
+.userName {
+    margin-left: 10px;
 }
 
 .nav-masthead .nav-link {
